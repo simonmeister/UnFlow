@@ -1,0 +1,13 @@
+data
+log
+out
+
+/config.ini
+
+*.ckpt
+*~
+
+__pycache__
+
+*.so
+*.o
