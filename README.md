@@ -73,7 +73,7 @@ of the different operating modes.
 
 ### Software requirements
 - python 3
-- gcc4 (as default gcc/g++)
+- gcc4
 - `pip install tensorflow-gpu==1.2 matplotlib pypng rarfile pillow`. Newer versions of
 tensorflow will not work, as custom op compilation is broken in 1.3 and 1.4.
 
@@ -82,7 +82,7 @@ tensorflow will not work, as custom op compilation is broken in 1.3 and 1.4.
 and `[compile]` sections for your environment (see comments in the file).
 
 ### Run & evaluate experiments
-- adapt settings in `config.ini` for your experiment
+- adapt settings in `./config.ini` for your experiment
 - `cd src`
 - train with `python run.py --ex my_experiment`. Evaluation is run during training as specified
 in `config.ini`, but no visualizations are saved.
