@@ -30,7 +30,8 @@ UnFlow is released under the MIT License (refer to the LICENSE file for details)
 ## Contents
 1. [Introduction](#introduction)
 2. [Usage](#usage)
-2. [Replicating our Models](#replicating-our-models)
+3. [Replicating our Models](#replicating-our-models)
+4. [Navigating the Code](#navigating-the-code)
 
 ## Introduction
 
@@ -121,3 +122,13 @@ If you want to train on Cityscapes:
 
 Note that all models but `CSS_ft` were trained without ground truth optical flow,
 using our unsupervised proxy loss only.
+
+## Navigating the code
+The core implementation of our method resides in [src/e2eflow/core](src/e2eflow/core). The key files are:
+- [losses.py](src/e2eflow/core/losses.py): Proxy losses for unsupervised training,
+- [flownet.py](src/e2eflow/core/flownet.py): [FlowNet](https://arxiv.org/abs/1612.01925) architectures with support for stacking,
+- [image_warp.py](src/e2eflow/core/image_warp.py): Backward-warping via differentiable bilinear image sampling,
+- [supervised.py](src/e2eflow/core/supervised.py): Supervised loss and network computation,
+- [unsupervised.py](src/e2eflow/core/unsupervised.py): Unsupervised (bi-directional) multi-resolution network and loss computation,
+- [train.py](src/e2eflow/core/train.py): Implementation of training with online evaluation,
+- [augment.py](src/e2eflow/core/augment.py): Geometric and photometric data augmentations.
