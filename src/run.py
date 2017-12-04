@@ -5,7 +5,6 @@ import tensorflow as tf
 from tensorflow.python.client import device_lib
 
 from e2eflow.core.train import Trainer
-from e2eflow.core.evaluate import evaluate
 from e2eflow.experiment import Experiment
 from e2eflow.util import convert_input_strings
 
