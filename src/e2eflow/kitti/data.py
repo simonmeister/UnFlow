@@ -124,7 +124,8 @@ class KITTIData(Data):
         base_url = self.KITTI_RAW_URL
         local_dir = os.path.join(self.data_dir, 'kitti_raw')
         records = raw_records.get_kitti_records(self.development)
-        download_done_once = False
+        downloaded_records = False
+          
         for i, record in enumerate(records):
             date_str = record.split("_drive_")[0]
             foldername = record + "_extract"
@@ -136,15 +137,15 @@ class KITTIData(Data):
                 url = base_url + record + "/" + foldername + '.zip'
                 print(url)
                 self._download_and_extract(url, local_dir)
-                if i == len(records - 1):
-                    download_done_once = True
+                downloaded_records = True
 
             # Remove unused directories
             tryremove(os.path.join(local_path, 'velodyne_points'))
             tryremove(os.path.join(local_path, 'oxts'))
             tryremove(os.path.join(local_path, 'image_00'))
             tryremove(os.path.join(local_path, 'image_01'))
-        if download_done_once:
+            
+        if downloaded_records:
             print("Downloaded all KITTI raw files.")
             exclude_target_dir = os.path.join(self.data_dir, 'exclude_target_dir')
             exclude_lists_dir = '../files/kitti_excludes'
