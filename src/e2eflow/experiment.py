@@ -46,10 +46,6 @@ class Experiment():
         else:
             _init_dirs()
 
-        with open(os.path.join(log_dir, 'git_label'), 'w') as f:
-            git_label = subprocess.check_output(['git', 'describe', '--always'])
-            f.write(str(git_label, 'utf-8'))
-
         config_path = os.path.join(log_dir, 'config.ini')
         if not os.path.isfile(config_path) or overwrite:
             copyfile('../config.ini', config_path)
