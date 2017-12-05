@@ -12,7 +12,7 @@ from urllib.request import urlretrieve
 
 
 class ChairsData(Data):
-    URL = 'http://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs.zip'
+    URL = 'http://lmb.informatik.uni-freiburg.de/data/FlyingChairs/FlyingChairs.zip'
     TRAIN_VAL_URL = 'http://lmb.informatik.uni-freiburg.de/resources/datasets/FlyingChairs/FlyingChairs_train_val.txt'
     dirs = ['flying_chairs']
 
