@@ -99,12 +99,12 @@ def _evaluate_experiment(name, input_fn, data_input):
     resized_w = data_input.dims[1]
     
     current_config = config_dict('../config.ini')
-    exp_dir = os.path.join(current_config['dirs]['log'], 'ex', name)
+    exp_dir = os.path.join(current_config['dirs']['log'], 'ex', name)
     config_path = os.path.join(exp_dir, 'config.ini')
     if not os.path.isfile(config_path):
         config_path = '../config.ini'
     if not os.path.isdir(exp_dir) or not tf.train.get_checkpoint_state(exp_dir):
-        exp_dir = os.path.join(current_config['dirs]['checkpoints'], name)
+        exp_dir = os.path.join(current_config['dirs']['checkpoints'], name)
     config = config_dict(config_path)
     params = config['train']
     convert_input_strings(params, config_dict('../config.ini')['dirs'])
