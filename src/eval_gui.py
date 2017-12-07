@@ -42,8 +42,6 @@ tf.app.flags.DEFINE_integer('num_vis', 100,
                             'Number of evalutations to visualize. Set to -1 to visualize all.')
 tf.app.flags.DEFINE_string('gpu', '0',
                            'GPU device to evaluate on.')
-tf.app.flags.DEFINE_string('alt', '/media/data/checkpoints',
-                           'Alternate path to search for experiments.')
 tf.app.flags.DEFINE_boolean('output_benchmark', False,
                             'Output raw flow files.')
 tf.app.flags.DEFINE_boolean('output_visual', False,
@@ -99,13 +97,14 @@ def _evaluate_experiment(name, input_fn, data_input):
     normalize_fn = data_input._normalize_image
     resized_h = data_input.dims[0]
     resized_w = data_input.dims[1]
-
-    exp_dir = os.path.join('../log/ex', name)
+    
+    current_config = config_dict('../config.ini')
+    exp_dir = os.path.join(current_config['dirs]['log'], 'ex', name)
     config_path = os.path.join(exp_dir, 'config.ini')
     if not os.path.isfile(config_path):
         config_path = '../config.ini'
     if not os.path.isdir(exp_dir) or not tf.train.get_checkpoint_state(exp_dir):
-        exp_dir = os.path.join(FLAGS.alt, name)
+        exp_dir = os.path.join(current_config['dirs]['checkpoints'], name)
     config = config_dict(config_path)
     params = config['train']
     convert_input_strings(params, config_dict('../config.ini')['dirs'])
