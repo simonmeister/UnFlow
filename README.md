@@ -75,6 +75,7 @@ of the different operating modes.
 ### Software requirements
 - python 3
 - gcc4
+- RAR backend tool for `rarfile` (see https://pypi.python.org/pypi/rarfile/)
 - `pip install tensorflow-gpu==1.2 matplotlib pypng rarfile pillow`. Newer versions of
 tensorflow will not work, as custom op compilation is broken in 1.3 and 1.4.
 
