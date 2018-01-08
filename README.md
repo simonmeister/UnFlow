@@ -96,6 +96,20 @@ You can use the --help flag with run.py or eval_gui.py to view all available fla
 ### View tensorboard logs
 - view logs for all experiments with `tensorboard --logdir=<log_dir>/ex`
 
+### Pre-trained models
+We provide checkpoints for the 
+`C_SYNTHIA`, `CS_SYNTHIA`, `CSS_SYNTHIA`, `C`, `CS`, `CSS` and `CSS_ft` 
+models (see "Replicating our models" for a description). 
+To use them,
+
+- download 
+[this file](https://drive.google.com/file/d/16rOMerQvUnj6UjGjMyQayC1GcqaRu44b/view?usp=sharing) 
+and extract the contents to `<log_dir>/ex/`.
+
+Now, you can evalute and compare different models, e.g.
+
+- `python eval_gui.py --ex C_SYNTHIA,C,CSS_ft`.
+
 ## Replicating our models
 
 In the following, each list item gives an experiment name and parameters to
