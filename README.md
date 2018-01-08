@@ -106,7 +106,7 @@ To use them,
 [this file](https://drive.google.com/file/d/16rOMerQvUnj6UjGjMyQayC1GcqaRu44b/view?usp=sharing) 
 and extract the contents to `<log_dir>/ex/`.
 
-Now, you can evalute and compare different models, e.g.
+Now, you can evaluate and compare different models, e.g.
 
 - `python eval_gui.py --ex C_SYNTHIA,C,CSS_ft`.
 
