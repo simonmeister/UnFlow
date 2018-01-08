@@ -77,6 +77,9 @@ def convert_input_strings(config_dct, dirs):
         for name in config_dct['finetune'].split(","):
             ckpt_dir = os.path.join(dirs['checkpoints'], name)
             ckpt = tf.train.get_checkpoint_state(ckpt_dir)
+            if ckpt is None:
+              ckpt_dir = os.path.join(dirs['log'], 'ex', name)
+              ckpt = tf.train.get_checkpoint_state(ckpt_dir)
             assert ckpt, "Could not load experiment " + name
             finetune.append(ckpt)
         config_dct['finetune'] = finetune
