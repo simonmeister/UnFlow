@@ -57,7 +57,7 @@ def flow_error_image(flow_1, flow_2, mask_occ, mask_noc=None, log_colors=True):
     """
     mask_noc = tf.ones(tf.shape(mask_occ)) if mask_noc is None else mask_noc
     diff_sq = (flow_1 - flow_2) ** 2
-    diff = tf.sqrt(tf.reduce_sum(diff_sq, [3], keep_dims=True))
+    diff = tf.sqrt(tf.reduce_sum(diff_sq, [3], keepdims=True))
     if log_colors:
         num_batch, height, width, _ = tf.unstack(tf.shape(flow_1))
         colormap = [
@@ -73,7 +73,7 @@ def flow_error_image(flow_1, flow_2, mask_occ, mask_noc=None, log_colors=True):
             [16,1000000000.0,165,0,38]]
         colormap = np.asarray(colormap, dtype=np.float32)
         colormap[:, 2:5] = colormap[:, 2:5] / 255
-        mag = tf.sqrt(tf.reduce_sum(tf.square(flow_2), 3, keep_dims=True))
+        mag = tf.sqrt(tf.reduce_sum(tf.square(flow_2), 3, keepdims=True))
         error = tf.minimum(diff / 3, 20 * diff / mag)
         im = tf.zeros([num_batch, height, width, 3])
         for i in range(colormap.shape[0]):
@@ -120,4 +120,4 @@ def outlier_pct(gt_flow, flow, mask, threshold=3.0, relative=0.05):
 
 
 def euclidean(t):
-    return tf.sqrt(tf.reduce_sum(t ** 2, [3], keep_dims=True))
+    return tf.sqrt(tf.reduce_sum(t ** 2, [3], keepdims=True))

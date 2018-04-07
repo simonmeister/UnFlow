@@ -10,7 +10,7 @@ DISOCC_THRESH = 0.8
 
 
 def length_sq(x):
-    return tf.reduce_sum(tf.square(x), 3, keep_dims=True)
+    return tf.reduce_sum(tf.square(x), 3, keepdims=True)
 
 
 def compute_losses(im1, im2, flow_fw, flow_bw,
@@ -106,7 +106,7 @@ def ternary_loss(im1, im2_warped, mask, max_distance=1):
         def _hamming_distance(t1, t2):
             dist = tf.square(t1 - t2)
             dist_norm = dist / (0.1 + dist)
-            dist_sum = tf.reduce_sum(dist_norm, 3, keep_dims=True)
+            dist_sum = tf.reduce_sum(dist_norm, 3, keepdims=True)
             return dist_sum
 
         t1 = _ternary_transform(im1)
@@ -154,7 +154,7 @@ def divergence(flow):
         flow_u, flow_v = tf.split(axis=3, num_or_size_splits=2, value=flow)
         grad_x = conv2d(flow_u, weights_x)
         grad_y = conv2d(flow_v, weights_y)
-        div = tf.reduce_sum(tf.concat(axis=3, values=[grad_x, grad_y]), 3, keep_dims=True)
+        div = tf.reduce_sum(tf.concat(axis=3, values=[grad_x, grad_y]), 3, keepdims=True)
         return div
 
 
