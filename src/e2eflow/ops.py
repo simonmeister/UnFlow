@@ -24,7 +24,8 @@ def compile(op=None):
     else:
         to_compile = OP_NAMES
 
-    tf_inc = tf.sysconfig.get_include()
+    tf_inc = " ".join(tf.sysconfig.get_compile_flags())
+    tf_lib = " ".join(tf.sysconfig.get_link_flags())
     for n in to_compile:
         base = n + "_op"
         fn_cu_cc = base + ".cu.cc"
@@ -38,16 +39,14 @@ def compile(op=None):
         else:
             cuda_lib64_path_arg = ""
 
-        nvcc_cmd = "nvcc -std=c++11 -c -o {} -I {} -D GOOGLE_CUDA=1 -x cu -Xcompiler -fPIC"
+        nvcc_cmd = "nvcc -std=c++11 -c -o {} {} {} -D GOOGLE_CUDA=1 -x cu -Xcompiler -fPIC -I /usr/local --expt-relaxed-constexpr"
         nvcc_cmd = nvcc_cmd.format(" ".join([fn_cu_o, fn_cu_cc]),
-                                   tf_inc)
+                                   tf_inc, tf_lib)
         subprocess.check_output(nvcc_cmd, shell=True)
-
-        gcc_cmd = "{} -std=c++11 -shared -o {} -I {} -fPIC -lcudart -D GOOGLE_CUDA=1 {}"
+        gcc_cmd = "{} -std=c++11 -shared -o {} {} -fPIC -L /usr/local/cuda/lib64 -lcudart {} -O2"
         gcc_cmd = gcc_cmd.format(config['compile']['g++'],
-                                " ".join([fn_so, fn_cu_o, fn_cc]),
-                                 tf_inc,
-                                 cuda_lib64_path_arg)
+                                 " ".join([fn_so, fn_cu_o, fn_cc]),
+                                 tf_inc, tf_lib)
         subprocess.check_output(gcc_cmd, shell=True)
 
 

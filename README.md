@@ -76,8 +76,7 @@ of the different operating modes.
 - python 3
 - gcc4
 - RAR backend tool for `rarfile` (see https://pypi.python.org/pypi/rarfile/)
-- `pip install tensorflow-gpu==1.2 matplotlib pypng rarfile pillow`. Newer versions of
-tensorflow will not work, as custom op compilation is broken in 1.3 and 1.4.
+- `pip install tensorflow-gpu>=1.7 matplotlib pypng rarfile pillow`
 
 ### Prepare environment
 - copy `config_template/config.ini` to `./` and modify settings in the `[dir]`, `[run]`

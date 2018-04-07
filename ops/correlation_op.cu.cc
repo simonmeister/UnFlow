@@ -10,7 +10,8 @@
 #include "correlation_op.h"
 
 using namespace tensorflow;
-
+using CPUDevice = Eigen::ThreadPoolDevice;
+using GPUDevice = Eigen::GpuDevice;
 // ---------------------------------------------------------
 // DIRECT PORT OF CAFFE CODE WITH MINIMAL CHANGES
 // ---------------------------------------------------------

@@ -9,7 +9,8 @@
 
 using namespace tensorflow;
 
-typedef Eigen::GpuDevice GPUDevice;
+using CPUDevice = Eigen::ThreadPoolDevice;
+using GPUDevice = Eigen::GpuDevice;
 
 __global__ void DownsampleKernel(const int32 nthreads,
                                  const float* images,
