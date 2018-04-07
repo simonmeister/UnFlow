@@ -43,7 +43,7 @@ def compile(op=None):
         nvcc_cmd = nvcc_cmd.format(" ".join([fn_cu_o, fn_cu_cc]),
                                    tf_inc, tf_lib)
         subprocess.check_output(nvcc_cmd, shell=True)
-        gcc_cmd = "{} -std=c++11 -shared -o {} {} -fPIC -L /usr/local/cuda/lib64 -lcudart {} -O2"
+        gcc_cmd = "{} -std=c++11 -shared -o {} {} -fPIC -L /usr/local/cuda/lib64 -lcudart {} -O2 -D GOOGLE_CUDA=1"
         gcc_cmd = gcc_cmd.format(config['compile']['g++'],
                                  " ".join([fn_so, fn_cu_o, fn_cc]),
                                  tf_inc, tf_lib)

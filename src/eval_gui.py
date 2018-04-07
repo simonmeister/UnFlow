@@ -21,7 +21,7 @@ from e2eflow.middlebury.data import MiddleburyData
 from e2eflow.core.unsupervised import unsupervised_loss
 from e2eflow.core.input import resize_input, resize_output_crop, resize_output, resize_output_flow
 from e2eflow.core.train import restore_networks
-from e2eflow.ops import forward_warp, downsample
+from e2eflow.ops import forward_warp
 from e2eflow.gui import display
 from e2eflow.core.losses import DISOCC_THRESH, occlusion, create_outgoing_mask
 from e2eflow.util import convert_input_strings
@@ -97,7 +97,7 @@ def _evaluate_experiment(name, input_fn, data_input):
     normalize_fn = data_input._normalize_image
     resized_h = data_input.dims[0]
     resized_w = data_input.dims[1]
-    
+
     current_config = config_dict('../config.ini')
     exp_dir = os.path.join(current_config['dirs']['log'], 'ex', name)
     config_path = os.path.join(exp_dir, 'config.ini')

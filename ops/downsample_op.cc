@@ -15,7 +15,8 @@
 
 using namespace tensorflow;
 
-typedef Eigen::GpuDevice GPUDevice;
+using CPUDevice = Eigen::ThreadPoolDevice;
+using GPUDevice = Eigen::GpuDevice;
 
 void Downsample(const GPUDevice& d,
                 typename TTypes<float, 4>::ConstTensor images,
