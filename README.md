@@ -77,7 +77,7 @@ of the different operating modes.
 - gcc4
 - RAR backend tool for `rarfile` (see https://pypi.python.org/pypi/rarfile/)
 - python packages: `matplotlib pypng rarfile pillow` and `tensorflow-gpu` (at least version 1.7)
-- CUDA and CuDNN. Please make sure that the versions you install are compatible with the version of `tensorflow-gpu` you are using (see e.g. https://github.com/tensorflow/tensorflow/releases).
+- CUDA and CuDNN. You should use the installer downloaded from the NVIDIA website and install to /usr/local/cuda. Please make sure that the versions you install are compatible with the version of `tensorflow-gpu` you are using (see e.g. https://github.com/tensorflow/tensorflow/releases).
 
 ### Prepare environment
 - copy `config_template/config.ini` to `./` and modify settings in the `[dir]`, `[run]`
