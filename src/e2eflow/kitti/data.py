@@ -79,9 +79,9 @@ def exclude_test_and_train_images(kitti_dir, exclude_lists_dir, exclude_target_d
 
 
 class KITTIData(Data):
-    KITTI_RAW_URL = 'http://kitti.is.tue.mpg.de/kitti/raw_data/'
-    KITTI_2012_URL = 'http://kitti.is.tue.mpg.de/kitti/data_stereo_flow.zip'
-    KITTI_2015_URL = 'http://kitti.is.tue.mpg.de/kitti/data_scene_flow.zip'
+    KITTI_RAW_URL = 'https://s3.eu-central-1.amazonaws.com/avg-kitti/raw_data/'
+    KITTI_2012_URL = 'https://s3.eu-central-1.amazonaws.com/avg-kitti/data_stereo_flow.zip'
+    KITTI_2015_URL = 'https://s3.eu-central-1.amazonaws.com/avg-kitti/data_scene_flow.zip'
 
     dirs = ['data_stereo_flow', 'data_scene_flow', 'kitti_raw']
 
