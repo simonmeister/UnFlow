@@ -42,6 +42,9 @@ def compile(op=None):
                                 tf_inc, tf_lib)
         subprocess.check_output(nvcc_cmd, shell=True)
         gcc_cmd = "{} -std=c++11 -shared -o {} {} -fPIC -L " + cuda_dir + "/cuda/lib64 -lcudart {} -O2 -D GOOGLE_CUDA=1"
+        gcc_cmd = gcc_cmd.format(config['compile']['g++'],	
+                                 " ".join([fn_so, fn_cu_o, fn_cc]),	
+                                 tf_inc, tf_lib)
         subprocess.check_output(gcc_cmd, shell=True)
 
 
