@@ -8,6 +8,8 @@ This repository contains the TensorFlow implementation of the paper
 [Junhwa Hur](http://www.visinf.tu-darmstadt.de), and
 [Stefan Roth](http://www.visinf.tu-darmstadt.de).
 
+## Slides 
+
 [Download slides from AAAI 2018 talk.](https://drive.google.com/open?id=1hpguALCru1M5sUInzeBCzKlVeSY0EM9N)
 
 ### Citation
