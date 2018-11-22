@@ -6,7 +6,7 @@ from .augment import random_affine, random_photometric
 from .flow_util import flow_to_color
 from .util import resize_area, resize_bilinear
 from .losses import compute_losses, create_border_mask
-from ..ops import downsample
+from .util import downsample
 from .image_warp import image_warp
 from .flownet import flownet, FLOW_SCALE
 
