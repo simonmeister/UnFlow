@@ -31,6 +31,10 @@ If you find UnFlow useful in your research, please consider citing:
 UnFlow is released under the MIT License (refer to the LICENSE file for details).
 
 
+### Unofficial PyTorch code
+There is a unofficial [third party PyTorch implementation](https://github.com/sniklaus/pytorch-unflow) by [Simon Niklaus](https://github.com/sniklaus).
+
+
 ## Contents
 1. [Introduction](#introduction)
 2. [Usage](#usage)
@@ -74,7 +78,11 @@ Please refer to the configuration file template (`config_template/config.ini`) f
 of the different operating modes.
 
 ### Hardware requirements
-- at least one NVIDIA GPU (multi-GPU training is supported)
+- at least one NVIDIA GPU (multi-GPU training is supported). We used the Titan X Pascal with 12GB memory.
+- for best performance, at least 8GB of GPU memory is recommended, for the stacked variants 11-12GB may be best
+- to run the code with less GPU memory, take a look at https://github.com/openai/gradient-checkpointing. 
+[One user reported](https://github.com/simonmeister/UnFlow/issues/54) 
+successfully running the full CSS model with a GTX 960 with 4GB memory. Note that training will take longer in that case.
 
 ### Software requirements
 - python 3
