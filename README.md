@@ -46,6 +46,11 @@ There is a unofficial [third party PyTorch implementation](https://github.com/sn
 Our paper describes a method to train end-to-end deep networks for dense optical flow
 without the need for ground truth optical flow.
 
+*NOTE (January 2020): There may be some hiccups with more recent versions of tensorflow due to the unstable custom
+op compilation API used for the correlation operation. If you experience these issues, please try one of the older tensorflow
+versions (see list of releases, e.g. 1.2 or 1.7) until I find time to fix these issues. I'm currently too busy with new projects
+to upgrade the code, and would be happy about any contributions.*
+
 This implementation supports all training and evaluation styles described
 in the paper. This includes
 - unsupervised training with our proxy loss(es) on
